@@ -1,0 +1,16 @@
+{
+  "name": "BARNI GAME",
+  "short_name": "BARNI GAME",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#16002b",
+  "theme_color": "#16002b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/barni.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
