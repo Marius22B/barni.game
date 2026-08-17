@@ -1,4 +1,4 @@
-const CACHE_NAME = "barni-game-v2";
+const CACHE_NAME = "barni-game-v3";
 
 const FILES_TO_CACHE = [
     "./",
