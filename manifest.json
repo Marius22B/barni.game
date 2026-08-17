@@ -1,7 +1,8 @@
 {
   "name": "BARNI GAME",
   "short_name": "BARNI GAME",
-  "start_url": "./index.html",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#16002b",
   "theme_color": "#16002b",
