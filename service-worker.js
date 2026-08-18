@@ -1,4 +1,4 @@
-const CACHE_NAME = "barni-game-v3";
+const CACHE_NAME = "barni-game-v4";
 
 const FILES_TO_CACHE = [
     "./",
@@ -27,6 +27,15 @@ self.addEventListener("activate", event => {
             )
         ).then(() => self.clients.claim())
     );
+});
+
+self.addEventListener("message", event => {
+    if (
+        event.data &&
+        event.data.type === "SKIP_WAITING"
+    ) {
+        self.skipWaiting();
+    }
 });
 
 self.addEventListener("fetch", event => {
