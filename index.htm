@@ -2286,6 +2286,10 @@
 
             }
 
+        /* ==========================
+   ZONĂ MARE DE ATINGERE
+   ========================== */
+
             barni.addEventListener(
                 "pointerdown",
                 event => {
@@ -2299,6 +2303,16 @@
 
                 }
             );
+
+
+            /* Zonă invizibilă mai mare
+            doar pentru Barni, nu bombe */
+
+            if (type !== "bomb") {
+
+                barni.style.padding = "20px";
+
+            }
 
             area.appendChild(
                 barni
