@@ -63,32 +63,26 @@
             font-size: clamp(38px, 10vw, 70px);
             margin-bottom: 20px;
 
-            animation:
-                glow 2s infinite alternate;
+            animation: glow 2s infinite alternate;
         }
 
         h2 {
-            font-size:
-                clamp(28px, 7vw, 50px);
-
+            font-size: clamp(28px, 7vw, 50px);
             margin-bottom: 15px;
         }
 
         p {
             font-size: 20px;
             line-height: 1.5;
-
             max-width: 550px;
         }
 
         button {
             margin-top: 30px;
 
-            padding:
-                17px 35px;
+            padding: 17px 35px;
 
             border: none;
-
             border-radius: 50px;
 
             background:
@@ -116,11 +110,8 @@
 
         .emoji {
             font-size: 80px;
-
             margin-bottom: 20px;
-
-            animation:
-                bounce 1.5s infinite;
+            animation: bounce 1.5s infinite;
         }
 
         /* ==================================
@@ -128,15 +119,12 @@
         ================================== */
 
         #startAppScreen {
-
             background:
-
                 radial-gradient(
                     circle at center,
                     rgba(255,43,214,.18),
                     transparent 45%
                 ),
-
                 linear-gradient(
                     135deg,
                     #16002b,
@@ -146,69 +134,44 @@
         }
 
         .logo {
-
             text-align: center;
-
-            animation:
-                logoPulse 2s infinite alternate;
+            animation: logoPulse 2s infinite alternate;
         }
 
         .logoEmoji {
-
             font-size: 105px;
-
             margin-bottom: 10px;
-
-            animation:
-                bounce 1.4s infinite;
+            animation: bounce 1.4s infinite;
         }
 
         .logo h1 {
-
             margin-bottom: 10px;
-
-            font-size:
-                clamp(
-                    50px,
-                    13vw,
-                    90px
-                );
+            font-size: clamp(50px, 13vw, 90px);
         }
 
         .logo p {
-
             opacity: .9;
         }
 
         .startButtons {
-
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             gap: 5px;
         }
 
         .startButtons button {
-
             min-width: 250px;
         }
 
         #installButton {
-
             display: none;
         }
 
         .installHint {
-
             font-size: 14px;
-
             opacity: .65;
-
             margin-top: 15px;
-
             max-width: 370px;
         }
 
@@ -217,7 +180,6 @@
         ================================== */
 
         #musicToggle {
-
             position: fixed;
 
             right: 15px;
@@ -227,8 +189,7 @@
 
             margin: 0;
 
-            padding:
-                10px 15px;
+            padding: 10px 15px;
 
             font-size: 18px;
 
@@ -237,8 +198,7 @@
 
             box-shadow: none;
 
-            backdrop-filter:
-                blur(8px);
+            backdrop-filter: blur(8px);
         }
 
         /* ==================================
@@ -247,17 +207,27 @@
 
         .levelButtons {
 
-            display: flex;
+            display: grid;
 
-            flex-direction: column;
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
 
-            gap: 14px;
+            gap: 12px;
 
             width:
                 min(
-                    90vw,
-                    430px
+                    94vw,
+                    650px
                 );
+
+            max-height: 58vh;
+
+            overflow-y: auto;
+
+            padding: 5px 8px 15px;
 
             margin-top: 20px;
         }
@@ -266,7 +236,13 @@
 
             width: 100%;
 
+            min-height: 88px;
+
             margin-top: 0;
+
+            padding: 13px 10px;
+
+            font-size: 17px;
         }
 
         .levelButton small {
@@ -275,7 +251,9 @@
 
             margin-top: 6px;
 
-            font-size: 14px;
+            font-size: 12px;
+
+            line-height: 1.35;
 
             opacity: .85;
         }
@@ -297,15 +275,40 @@
             box-shadow: none;
         }
 
+        .levelButton.bossButton {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff004c,
+                    #7c00ff,
+                    #ff2bd6
+                );
+
+            box-shadow:
+                0 0 25px
+                rgba(255,0,100,.55);
+        }
+
+        @media (max-width: 500px) {
+
+            .levelButtons {
+                grid-template-columns: 1fr;
+                max-height: 55vh;
+            }
+
+            .levelButton {
+                min-height: 76px;
+            }
+
+        }
+
         /* ==================================
            JOC
         ================================== */
 
         #game {
-
-            justify-content:
-                flex-start;
-
+            justify-content: flex-start;
             padding: 0;
         }
 
@@ -342,9 +345,7 @@
         }
 
         .stat {
-
             font-size: 17px;
-
             font-weight: bold;
         }
 
@@ -359,6 +360,10 @@
 
             overflow: hidden;
         }
+
+        /* ==================================
+           BARNI
+        ================================== */
 
         .barni {
 
@@ -390,6 +395,8 @@
 
             touch-action:
                 manipulation;
+
+            z-index: 2;
         }
 
         .barni img {
@@ -449,6 +456,310 @@
                     scale(1.8);
 
                 opacity: 0;
+            }
+        }
+
+        /* ==================================
+           BARNI AURIU
+        ================================== */
+
+        .barni.golden {
+
+            filter:
+                drop-shadow(
+                    0 0 8px #ffd700
+                )
+                drop-shadow(
+                    0 0 18px #ff9d00
+                );
+        }
+
+        .barni.golden img {
+
+            filter:
+                sepia(1)
+                saturate(4)
+                brightness(1.25)
+                hue-rotate(5deg);
+        }
+
+        .barni.golden::after {
+
+            content: "⭐";
+
+            position: absolute;
+
+            top: -10px;
+            right: -8px;
+
+            font-size: 22px;
+
+            animation:
+                starSpin 1s infinite;
+        }
+
+        @keyframes starSpin {
+
+            0% {
+                transform: rotate(-15deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(15deg) scale(1.2);
+            }
+
+            100% {
+                transform: rotate(-15deg) scale(1);
+            }
+        }
+
+        /* ==================================
+           BOMBE
+        ================================== */
+
+        .barni.bomb {
+
+            font-size: 55px;
+
+            width: 65px;
+            height: 75px;
+
+            display: flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            filter:
+                drop-shadow(
+                    0 0 10px red
+                );
+        }
+
+        .barni.bomb::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            border:
+                2px solid
+                rgba(
+                    255,
+                    0,
+                    0,
+                    .7
+                );
+
+            animation:
+                bombPulse .5s
+                infinite alternate;
+        }
+
+        @keyframes bombPulse {
+
+            from {
+                transform: scale(.8);
+                opacity: .3;
+            }
+
+            to {
+                transform: scale(1.25);
+                opacity: 1;
+            }
+        }
+
+        /* ==================================
+           GHEAȚĂ
+        ================================== */
+
+        .barni.ice {
+
+            filter:
+                drop-shadow(
+                    0 0 10px #00e5ff
+                )
+                drop-shadow(
+                    0 0 20px #00aaff
+                );
+        }
+
+        .barni.ice img {
+
+            filter:
+                hue-rotate(100deg)
+                saturate(1.5)
+                brightness(1.15);
+        }
+
+        .barni.ice::after {
+
+            content: "❄️";
+
+            position: absolute;
+
+            top: -12px;
+            right: -12px;
+
+            font-size: 21px;
+        }
+
+        /* ==================================
+           BARNI CARE SE MIȘCĂ LATERAL
+        ================================== */
+
+        .barni.moving {
+
+            animation:
+                fall linear forwards,
+                sideMove .8s
+                ease-in-out infinite
+                alternate;
+        }
+
+        @keyframes sideMove {
+
+            from {
+                margin-left: -45px;
+            }
+
+            to {
+                margin-left: 45px;
+            }
+        }
+
+        /* ==================================
+           BARNI MICI
+        ================================== */
+
+        .barni.tiny {
+
+            width: 42px;
+            height: 70px;
+
+        }
+
+        /* ==================================
+           EXPLOZIE
+        ================================== */
+
+        .explosion {
+
+            animation:
+                explosion .35s
+                ease-out forwards !important;
+        }
+
+        @keyframes explosion {
+
+            0% {
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            50% {
+
+                transform:
+                    scale(2)
+                    rotate(180deg);
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    scale(3.5)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        /* ==================================
+           BOSS
+        ================================== */
+
+        #game.bossMode #gameHeader {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(120,0,0,.65),
+                    rgba(60,0,100,.65),
+                    rgba(120,0,0,.65)
+                );
+
+            animation:
+                bossHeader 1s infinite
+                alternate;
+        }
+
+        @keyframes bossHeader {
+
+            from {
+                box-shadow:
+                    0 0 10px red;
+            }
+
+            to {
+                box-shadow:
+                    0 0 30px
+                    #ff00ff;
+            }
+        }
+
+        .bossMessage {
+
+            position: fixed;
+
+            top: 90px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 20;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            color: #ffd700;
+
+            text-shadow:
+                0 0 10px red,
+                0 0 20px #ff00ff;
+
+            pointer-events: none;
+
+            animation:
+                bossText 1s infinite
+                alternate;
+        }
+
+        @keyframes bossText {
+
+            from {
+                transform:
+                    translateX(-50%)
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    translateX(-50%)
+                    scale(1.08);
             }
         }
 
@@ -643,7 +954,6 @@
     </section>
 
 
-
     <!-- ==================================
          REGULAMENT
     ================================== -->
@@ -656,54 +966,49 @@
             📜
         </div>
 
-
         <h2>
             REGULAMENT
         </h2>
 
-
         <p>
 
-            Ai
-            <strong>
-                30 de secunde
-            </strong>
-
-            să prinzi cele
-
-            <strong>
-                22 de Barni
-            </strong>
-
-            care cad pe ecran. 🧸
+            Fiecare nivel are propriul
+            obiectiv și propria dificultate.
 
         </p>
 
-
         <br>
-
 
         <p
             style="
                 font-size:18px;
             ">
 
-            🧸 Apasă pe Barni
-            când îl vezi.
+            🧸 Prinde Barni pentru puncte.
 
             <br><br>
 
-            ⏱️ Ai 30 de secunde.
+            🟡 Barni aurii valorează
+            mai multe puncte.
 
             <br><br>
 
-            🎯 Trebuie să prinzi
-            toate cele 22 de Barni.
+            💣 Nu apăsa pe bombe!
 
             <br><br>
 
-            🏆 Dacă le prinzi pe toate,
-            câștigi!
+            ❄️ Obiectele speciale
+            pot modifica timpul.
+
+            <br><br>
+
+            🔓 Câștigă un nivel pentru
+            a-l debloca pe următorul.
+
+            <br><br>
+
+            👑 Nivelul 25 este
+            FINAL BOSS!
 
         </p>
 
@@ -719,7 +1024,6 @@
     </section>
 
 
-
     <!-- ==================================
          NIVELURI
     ================================== -->
@@ -732,11 +1036,9 @@
             🎯
         </div>
 
-
         <h2>
             ALEGE NIVELUL
         </h2>
-
 
         <p>
 
@@ -746,57 +1048,12 @@
 
         </p>
 
-
-        <div class="levelButtons">
-
-
-            <button
-                class="levelButton"
-                onclick="startLevel(1)">
-
-                🟢 NIVELUL 1
-
-                <small>
-                    22 Barni • 30 secunde
-                </small>
-
-            </button>
-
-
-            <button
-                class="levelButton locked"
-                id="level2Button"
-                onclick="startLevel(2)"
-                disabled>
-
-                🟡 NIVELUL 2 🔒
-
-                <small>
-                    30 Barni • 25 secunde
-                </small>
-
-            </button>
-
-
-            <button
-                class="levelButton locked"
-                id="level3Button"
-                onclick="startLevel(3)"
-                disabled>
-
-                🔴 NIVELUL 3 🔒
-
-                <small>
-                    40 Barni • 20 secunde
-                </small>
-
-            </button>
-
-
+        <div
+            class="levelButtons"
+            id="levelButtons">
         </div>
 
     </section>
-
 
 
     <!-- ==================================
@@ -862,7 +1119,6 @@
     </section>
 
 
-
     <!-- ==================================
          CÂȘTIG
     ================================== -->
@@ -877,8 +1133,11 @@
         </div>
 
 
-        <h1>
+        <h1
+            id="winTitle">
+
             AI REUȘIT!
+
         </h1>
 
 
@@ -893,8 +1152,7 @@
 
         <p id="wonText">
 
-            Ai prins toate cele
-            22 de Barni! 🍫
+            Ai prins toate obiectivele!
 
         </p>
 
@@ -907,7 +1165,6 @@
         </button>
 
     </section>
-
 
 
     <!-- ==================================
@@ -931,14 +1188,14 @@
 
         <p>
 
-            Ai prins doar
+            Ai făcut
 
             <strong
                 id="finalScore">
                 0
             </strong>
 
-            din
+            puncte din
 
             <span
                 id="loseTarget">
@@ -953,9 +1210,7 @@
                 margin-top:20px;
             ">
 
-            Se pare că cele
-            22 de Barni rămân
-            încă la mine. 😎
+            Mai încearcă o dată! 😈
 
         </p>
 
@@ -968,7 +1223,6 @@
         </button>
 
     </section>
-
 
 
     <!-- ==================================
@@ -1002,6 +1256,21 @@
                 localStorage.getItem(
                     "barniUnlockedLevel"
                 ) || 1
+            );
+
+        /*
+           Dacă versiunea veche a jocului
+           avea niveluri salvate, nu permitem
+           o valoare mai mare decât 25.
+        */
+
+        unlockedLevel =
+            Math.min(
+                Math.max(
+                    unlockedLevel,
+                    1
+                ),
+                25
             );
 
 
@@ -1240,6 +1509,72 @@
         }
 
 
+        function playGoldenSound() {
+
+            initAudio();
+
+            playTone(
+                987.77,
+                .1,
+                "triangle",
+                .055
+            );
+
+            playTone(
+                1318.51,
+                .15,
+                "triangle",
+                .05,
+                .07
+            );
+
+        }
+
+
+        function playBombSound() {
+
+            initAudio();
+
+            playTone(
+                100,
+                .25,
+                "sawtooth",
+                .08
+            );
+
+            playTone(
+                60,
+                .35,
+                "square",
+                .06,
+                .08
+            );
+
+        }
+
+
+        function playIceSound() {
+
+            initAudio();
+
+            playTone(
+                1400,
+                .12,
+                "sine",
+                .045
+            );
+
+            playTone(
+                1800,
+                .15,
+                "sine",
+                .035,
+                .07
+            );
+
+        }
+
+
         function playWinSound() {
 
             initAudio();
@@ -1278,12 +1613,19 @@
                 !musicMuted;
 
 
-            document.getElementById(
-                "musicToggle"
-            ).textContent =
-                musicMuted
-                    ? "🔇"
-                    : "🔊";
+            const toggle =
+                document.getElementById(
+                    "musicToggle"
+                );
+
+            if (toggle) {
+
+                toggle.textContent =
+                    musicMuted
+                        ? "🔇"
+                        : "🔊";
+
+            }
 
 
             if (!musicMuted) {
@@ -1419,51 +1761,357 @@
         const levels = {
 
             1: {
-
                 target: 22,
-
                 time: 30,
-
                 spawn: 650,
-
                 minFall: 2.5,
-
                 extraFall: 2
-
             },
-
 
             2: {
-
                 target: 30,
-
                 time: 25,
-
                 spawn: 520,
-
                 minFall: 2,
-
                 extraFall: 1.5
-
             },
 
-
             3: {
-
                 target: 40,
-
                 time: 20,
-
                 spawn: 400,
-
                 minFall: 1.5,
-
                 extraFall: 1.2
+            },
 
+            4: {
+                target: 45,
+                time: 23,
+                spawn: 360,
+                minFall: 1.35,
+                extraFall: 1
+            },
+
+            /* =====================
+               NIVEL 5
+               BARNI AURIU
+            ===================== */
+
+            5: {
+                target: 50,
+                time: 25,
+                spawn: 350,
+                minFall: 1.3,
+                extraFall: .9,
+                golden: true
+            },
+
+            /* =====================
+               NIVEL 6
+               BOMBE
+            ===================== */
+
+            6: {
+                target: 55,
+                time: 25,
+                spawn: 330,
+                minFall: 1.2,
+                extraFall: .85,
+                golden: true,
+                bombs: true
+            },
+
+            7: {
+                target: 60,
+                time: 24,
+                spawn: 315,
+                minFall: 1.1,
+                extraFall: .8,
+                golden: true,
+                bombs: true,
+                fast: true
+            },
+
+            /* =====================
+               NIVEL 8
+               GHEAȚĂ
+            ===================== */
+
+            8: {
+                target: 65,
+                time: 25,
+                spawn: 300,
+                minFall: 1.05,
+                extraFall: .75,
+                golden: true,
+                bombs: true,
+                ice: true
+            },
+
+            /* =====================
+               NIVEL 9
+               MIȘCARE
+            ===================== */
+
+            9: {
+                target: 70,
+                time: 24,
+                spawn: 285,
+                minFall: 1,
+                extraFall: .7,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true
+            },
+
+            10: {
+                target: 75,
+                time: 24,
+                spawn: 275,
+                minFall: .95,
+                extraFall: .65,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true
+            },
+
+            11: {
+                target: 80,
+                time: 23,
+                spawn: 260,
+                minFall: .9,
+                extraFall: .6,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true
+            },
+
+            12: {
+                target: 85,
+                time: 23,
+                spawn: 250,
+                minFall: .85,
+                extraFall: .55,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true
+            },
+
+            13: {
+                target: 90,
+                time: 22,
+                spawn: 240,
+                minFall: .8,
+                extraFall: .5,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true
+            },
+
+            14: {
+                target: 95,
+                time: 22,
+                spawn: 230,
+                minFall: .75,
+                extraFall: .48,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true
+            },
+
+            15: {
+                target: 100,
+                time: 22,
+                spawn: 220,
+                minFall: .7,
+                extraFall: .45,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true
+            },
+
+            /* =====================
+               BOMBĂ PERICULOASĂ
+            ===================== */
+
+            16: {
+                target: 105,
+                time: 21,
+                spawn: 210,
+                minFall: .65,
+                extraFall: .42,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                dangerousBombs: true
+            },
+
+            /* =====================
+               BARNI MICI
+            ===================== */
+
+            17: {
+                target: 110,
+                time: 21,
+                spawn: 200,
+                minFall: .6,
+                extraFall: .4,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            18: {
+                target: 115,
+                time: 21,
+                spawn: 190,
+                minFall: .56,
+                extraFall: .37,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            19: {
+                target: 120,
+                time: 20,
+                spawn: 180,
+                minFall: .52,
+                extraFall: .34,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            20: {
+                target: 125,
+                time: 20,
+                spawn: 170,
+                minFall: .48,
+                extraFall: .31,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            21: {
+                target: 130,
+                time: 20,
+                spawn: 160,
+                minFall: .45,
+                extraFall: .28,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            22: {
+                target: 140,
+                time: 19,
+                spawn: 150,
+                minFall: .42,
+                extraFall: .26,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            23: {
+                target: 150,
+                time: 19,
+                spawn: 140,
+                minFall: .4,
+                extraFall: .24,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            24: {
+                target: 160,
+                time: 18,
+                spawn: 130,
+                minFall: .37,
+                extraFall: .22,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true
+            },
+
+            /* =====================
+               NIVEL 25
+               FINAL BOSS
+            ===================== */
+
+            25: {
+                target: 175,
+                time: 20,
+                spawn: 115,
+                minFall: .34,
+                extraFall: .18,
+                golden: true,
+                bombs: true,
+                ice: true,
+                moving: true,
+                fast: true,
+                tiny: true,
+                dangerousBombs: true,
+                boss: true
             }
 
         };
 
+
+        /* ==========================
+           AFIȘARE NIVELURI
+        ========================== */
 
         function showLevels() {
 
@@ -1476,25 +2124,153 @@
         }
 
 
+        function getLevelDescription(
+            level
+        ) {
+
+            if (level <= 4) {
+
+                return "🧸 Mod clasic";
+
+            }
+
+            if (level === 5) {
+
+                return "🟡 Barni aurii";
+
+            }
+
+            if (level === 6) {
+
+                return "💣 Apar bombele";
+
+            }
+
+            if (level === 7) {
+
+                return "⚡ Viteză mai mare";
+
+            }
+
+            if (level === 8) {
+
+                return "❄️ Barni de gheață";
+
+            }
+
+            if (level === 9) {
+
+                return "↔️ Mișcare laterală";
+
+            }
+
+            if (level === 10) {
+
+                return "🔥 Combinație mecanici";
+
+            }
+
+            if (level <= 15) {
+
+                return "🔥 Dificultate avansată";
+
+            }
+
+            if (level === 16) {
+
+                return "💣 Bombe periculoase";
+
+            }
+
+            if (level === 17) {
+
+                return "🔬 Barni mai mici";
+
+            }
+
+            if (level <= 19) {
+
+                return "💀 Dificultate extremă";
+
+            }
+
+            if (level <= 24) {
+
+                return "☠️ Aproape imposibil";
+
+            }
+
+            return "👑 FINAL BOSS";
+
+        }
+
+
+        function getLevelIcon(
+            level
+        ) {
+
+            if (level === 25) {
+                return "👑";
+            }
+
+            if (level >= 20) {
+                return "💀";
+            }
+
+            if (level >= 15) {
+                return "🔴";
+            }
+
+            if (level >= 10) {
+                return "🟠";
+            }
+
+            if (level >= 5) {
+                return "🟡";
+            }
+
+            return "🟢";
+
+        }
+
+
         function updateLevelButtons() {
 
+            const container =
+                document.getElementById(
+                    "levelButtons"
+                );
+
+
+            container.innerHTML = "";
+
+
             for (
-                let level = 2;
-                level <= 3;
+                let level = 1;
+                level <= 25;
                 level++
             ) {
 
+                const config =
+                    levels[level];
+
+
                 const button =
-                    document.getElementById(
-                        "level" +
-                        level +
-                        "Button"
+                    document.createElement(
+                        "button"
                     );
 
 
-                if (!button) {
+                button.classList.add(
+                    "levelButton"
+                );
 
-                    continue;
+
+                if (level === 25) {
+
+                    button.classList.add(
+                        "bossButton"
+                    );
 
                 }
 
@@ -1508,47 +2284,77 @@
                     !unlocked;
 
 
-                button.classList.toggle(
-                    "locked",
-                    !unlocked
-                );
+                if (!unlocked) {
 
-
-                if (unlocked) {
-
-                    if (level === 2) {
-
-                        button.innerHTML =
-                            `
-                            🟡 NIVELUL 2
-                            <small>
-                                30 Barni • 25 secunde
-                            </small>
-                            `;
-
-                    }
-
-
-                    if (level === 3) {
-
-                        button.innerHTML =
-                            `
-                            🔴 NIVELUL 3
-                            <small>
-                                40 Barni • 20 secunde
-                            </small>
-                            `;
-
-                    }
+                    button.classList.add(
+                        "locked"
+                    );
 
                 }
+
+
+                const icon =
+                    getLevelIcon(
+                        level
+                    );
+
+
+                const lock =
+                    unlocked
+                        ? ""
+                        : " 🔒";
+
+
+                button.innerHTML = `
+
+                    ${icon}
+                    NIVELUL ${level}
+                    ${lock}
+
+                    <small>
+
+                        ${config.target}
+                        puncte •
+                        ${config.time}
+                        secunde
+
+                        <br>
+
+                        ${getLevelDescription(
+                            level
+                        )}
+
+                    </small>
+
+                `;
+
+
+                button.onclick =
+                    () => {
+
+                        startLevel(
+                            level
+                        );
+
+                    };
+
+
+                container.appendChild(
+                    button
+                );
 
             }
 
         }
 
 
-        function startLevel(level) {
+        /* ==========================
+           PORNIRE NIVEL
+        ========================== */
+
+        function startLevel(
+            level
+        ) {
 
             if (
                 level >
@@ -1560,12 +2366,19 @@
             }
 
 
-            currentLevel =
-                level;
-
-
             const config =
                 levels[level];
+
+
+            if (!config) {
+
+                return;
+
+            }
+
+
+            currentLevel =
+                level;
 
 
             targetScore =
@@ -1633,10 +2446,70 @@
                 currentLevel;
 
 
-            document.getElementById(
-                "gameArea"
-            ).innerHTML =
+            const game =
+                document.getElementById(
+                    "game"
+                );
+
+
+            const area =
+                document.getElementById(
+                    "gameArea"
+                );
+
+
+            area.innerHTML =
                 "";
+
+
+            game.classList.remove(
+                "bossMode"
+            );
+
+
+            const oldBoss =
+                document.querySelector(
+                    ".bossMessage"
+                );
+
+
+            if (oldBoss) {
+
+                oldBoss.remove();
+
+            }
+
+
+            const config =
+                levels[currentLevel];
+
+
+            if (config.boss) {
+
+                game.classList.add(
+                    "bossMode"
+                );
+
+
+                const bossMessage =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                bossMessage.className =
+                    "bossMessage";
+
+
+                bossMessage.textContent =
+                    "👑 FINAL BOSS 👑";
+
+
+                game.appendChild(
+                    bossMessage
+                );
+
+            }
 
 
             changeScreen(
@@ -1698,6 +2571,14 @@
                     spawnSpeed
                 );
 
+
+            /*
+               Primul Barni apare imediat,
+               nu după primul interval.
+            */
+
+            createBarni();
+
         }
 
 
@@ -1708,13 +2589,23 @@
         function createBarni() {
 
             if (
-                score >=
-                targetScore
+                !gameRunning ||
+                score >= targetScore
             ) {
 
                 return;
 
             }
+
+
+            const config =
+                levels[currentLevel];
+
+
+            const area =
+                document.getElementById(
+                    "gameArea"
+                );
 
 
             const barni =
@@ -1728,36 +2619,163 @@
             );
 
 
-            const image =
-                document.createElement(
-                    "img"
+            /*
+               =====================
+               ALEGERE TIP
+               =====================
+            */
+
+            let type =
+                "normal";
+
+
+            const random =
+                Math.random();
+
+
+            /*
+               BOMBĂ
+            */
+
+            if (
+                config.bombs &&
+                random < 0.16
+            ) {
+
+                type =
+                    "bomb";
+
+            }
+
+
+            /*
+               AURIU
+            */
+
+            else if (
+                config.golden &&
+                random < 0.31
+            ) {
+
+                type =
+                    "golden";
+
+            }
+
+
+            /*
+               GHEAȚĂ
+            */
+
+            else if (
+                config.ice &&
+                random < 0.44
+            ) {
+
+                type =
+                    "ice";
+
+            }
+
+
+            /*
+               =====================
+               IMAGINE / EMOJI
+               =====================
+            */
+
+            if (
+                type === "bomb"
+            ) {
+
+                barni.textContent =
+                    "💣";
+
+                barni.classList.add(
+                    "bomb"
+                );
+
+            }
+
+            else {
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                image.src =
+                    BARINI_IMAGE;
+
+
+                image.alt =
+                    "Barni";
+
+
+                barni.appendChild(
+                    image
                 );
 
 
-            image.src =
-                BARINI_IMAGE;
+                if (
+                    type ===
+                    "golden"
+                ) {
+
+                    barni.classList.add(
+                        "golden"
+                    );
+
+                }
 
 
-            image.alt =
-                "Barni";
+                if (
+                    type ===
+                    "ice"
+                ) {
+
+                    barni.classList.add(
+                        "ice"
+                    );
+
+                }
+
+            }
 
 
-            barni.appendChild(
-                image
-            );
+            /*
+               BARNI MICI
+            */
 
+            if (
+                config.tiny
+            ) {
 
-            const area =
-                document.getElementById(
-                    "gameArea"
+                barni.classList.add(
+                    "tiny"
                 );
+
+            }
+
+
+            /*
+               =====================
+               POZIȚIE
+               =====================
+            */
+
+            const width =
+                config.tiny
+                    ? 42
+                    : 64;
 
 
             const maxX =
                 Math.max(
                     0,
                     area.clientWidth -
-                    64
+                    width
                 );
 
 
@@ -1767,10 +2785,36 @@
                 "px";
 
 
-            const duration =
-                minFall +
+            /*
+               =====================
+               VITEZĂ
+               =====================
+            */
+
+            let duration =
+                config.minFall +
                 Math.random() *
-                extraFall;
+                config.extraFall;
+
+
+            if (
+                config.fast
+            ) {
+
+                duration *=
+                    0.62;
+
+            }
+
+
+            if (
+                config.boss
+            ) {
+
+                duration *=
+                    0.8;
+
+            }
 
 
             barni.style.animationDuration =
@@ -1778,14 +2822,40 @@
                 "s";
 
 
+            /*
+               =====================
+               MIȘCARE
+               =====================
+            */
+
+            if (
+                config.moving &&
+                type !== "bomb"
+            ) {
+
+                barni.classList.add(
+                    "moving"
+                );
+
+            }
+
+
+            /*
+               =====================
+               TOUCH / CLICK
+               =====================
+            */
+
             barni.addEventListener(
                 "pointerdown",
                 event => {
 
                     event.preventDefault();
 
+
                     catchBarni(
-                        barni
+                        barni,
+                        type
                     );
 
                 }
@@ -1796,6 +2866,12 @@
                 barni
             );
 
+
+            /*
+               =====================
+               ȘTERGERE
+               =====================
+            */
 
             setTimeout(
                 () => {
@@ -1811,7 +2887,7 @@
                 },
                 duration *
                 1000 +
-                300
+                600
             );
 
         }
@@ -1822,7 +2898,8 @@
         ========================== */
 
         function catchBarni(
-            barni
+            barni,
+            type = "normal"
         ) {
 
             if (
@@ -1834,10 +2911,142 @@
             }
 
 
-            score++;
+            /*
+               =====================
+               BOMBA
+               =====================
+            */
+
+            if (
+                type === "bomb"
+            ) {
+
+                playBombSound();
 
 
-            playCatchSound();
+                const penalty =
+                    levels[
+                        currentLevel
+                    ].dangerousBombs
+                        ? 5
+                        : 3;
+
+
+                timeLeft -=
+                    penalty;
+
+
+                if (
+                    timeLeft < 0
+                ) {
+
+                    timeLeft =
+                        0;
+
+                }
+
+
+                document.getElementById(
+                    "timer"
+                ).textContent =
+                    timeLeft;
+
+
+                barni.classList.add(
+                    "explosion"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        if (
+                            barni.parentNode
+                        ) {
+
+                            barni.remove();
+
+                        }
+
+                    },
+                    350
+                );
+
+
+                if (
+                    timeLeft <= 0
+                ) {
+
+                    endGame(
+                        false
+                    );
+
+                }
+
+
+                return;
+
+            }
+
+
+            /*
+               =====================
+               PUNCTE
+               =====================
+            */
+
+            let points = 1;
+
+
+            /*
+               AURIU = 2
+            */
+
+            if (
+                type === "golden"
+            ) {
+
+                points = 2;
+
+                playGoldenSound();
+
+            }
+
+
+            /*
+               GHEAȚĂ
+               +2 SECUNDE
+            */
+
+            else if (
+                type === "ice"
+            ) {
+
+                points = 1;
+
+                timeLeft += 2;
+
+
+                document.getElementById(
+                    "timer"
+                ).textContent =
+                    timeLeft;
+
+
+                playIceSound();
+
+            }
+
+
+            else {
+
+                playCatchSound();
+
+            }
+
+
+            score +=
+                points;
 
 
             document.getElementById(
@@ -1866,6 +3075,12 @@
                 250
             );
 
+
+            /*
+               =====================
+               VICTORIE
+               =====================
+            */
 
             if (
                 score >=
@@ -1918,13 +3133,48 @@
                 "";
 
 
+            const game =
+                document.getElementById(
+                    "game"
+                );
+
+
+            game.classList.remove(
+                "bossMode"
+            );
+
+
+            const bossMessage =
+                document.querySelector(
+                    ".bossMessage"
+                );
+
+
+            if (bossMessage) {
+
+                bossMessage.remove();
+
+            }
+
+
+            /*
+               =====================
+               CÂȘTIG
+               =====================
+            */
+
             if (won) {
 
                 playWinSound();
 
 
+                /*
+                   Deblochează următorul
+                   nivel.
+                */
+
                 if (
-                    currentLevel < 3
+                    currentLevel < 25
                 ) {
 
                     unlockedLevel =
@@ -1942,18 +3192,51 @@
                 }
 
 
+                /*
+                   NIVEL 25 = FINAL
+                */
+
+                if (
+                    currentLevel === 25
+                ) {
+
+                    document.getElementById(
+                        "winTitle"
+                    ).textContent =
+                        "AI TERMINAT JOCUL! 👑";
+
+
+                    document.getElementById(
+                        "wonText"
+                    ).textContent =
+                        "INCREDIBIL! Ai învins FINAL BOSS-ul și ai terminat toate cele 25 de niveluri! 🧸👑🔥";
+
+                }
+
+                else {
+
+                    document.getElementById(
+                        "winTitle"
+                    ).textContent =
+                        "AI REUȘIT!";
+
+
+                    document.getElementById(
+                        "wonText"
+                    ).textContent =
+                        "Ai terminat nivelul " +
+                        currentLevel +
+                        "! Ai făcut " +
+                        score +
+                        " puncte! 🧸";
+
+                }
+
+
                 document.getElementById(
                     "wonNumber"
                 ).textContent =
-                    targetScore;
-
-
-                document.getElementById(
-                    "wonText"
-                ).textContent =
-                    "Ai prins toate cele " +
-                    targetScore +
-                    " de Barni! 🍫";
+                    score;
 
 
                 changeScreen(
@@ -1964,6 +3247,12 @@
                 createConfetti();
 
             }
+
+            /*
+               =====================
+               PIERDERE
+               =====================
+            */
 
             else {
 
