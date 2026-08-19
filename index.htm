@@ -2290,19 +2290,18 @@
    ZONĂ MARE DE ATINGERE
    ========================== */
 
-            barni.addEventListener(
+                                      barni.addEventListener(
                 "pointerdown",
-                event => {
+                function(event) {
 
                     event.preventDefault();
 
                     catchBarni(
-                        barni,
-                        type
+                        barni
                     );
-
                 }
             );
+
 
             area.appendChild(
                 barni
